@@ -51,22 +51,24 @@ export default function Header({ theme, toggleTheme }) {
         <>
             <header className={`header ${scrolled ? 'scrolled' : ''}`}>
                 <div className="container header-inner">
-                    <button className="logo" onClick={scrollToTop} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-                        <span className="logo-dot" />
-                        <span>satyam.dev</span>
-                    </button>
+                    <div className="header-left" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+                        <button className="logo" onClick={scrollToTop} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                            <span className="logo-dot" />
+                            <span>satyam.dev</span>
+                        </button>
 
-                    <nav className="nav">
-                        {navItems.map(item => (
-                            <button
-                                key={item.id}
-                                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                                onClick={() => scrollTo(item.id)}
-                            >
-                                {item.label}
-                            </button>
-                        ))}
-                    </nav>
+                        <nav className="nav">
+                            {navItems.map(item => (
+                                <button
+                                    key={item.id}
+                                    className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
+                                    onClick={() => scrollTo(item.id)}
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                        </nav>
+                    </div>
 
                     <div className="header-actions">
                         <button className="theme-toggle" onClick={toggleTheme} title="Toggle theme">

@@ -4,12 +4,14 @@ export const projects = [
     name: "FamilyFeed",
     tagline: "Smart Family Organizer",
     description:
-      "A collaborative family management application that allows families to organize tasks, groceries, appointments, and events in one shared platform.",
+      "A collaborative family management platform that helps families organize daily activities including groceries, tasks, appointments, and events in a shared real-time environment.",
     features: [
-      "Shared lists and tasks",
-      "Calendar view",
-      "Appointment management",
-      "Smart bots (GroceryBot, HealthBot, TravelBot, EventsBot)",
+      "Shared lists, todos, and family events",
+      "Calendar and chat-based planning views",
+      "Smart automation bots (GroceryBot, HealthBot, TravelBot, EventsBot)",
+      "Scan receipt & image recognition for quick item creation",
+      "List and event cloning for faster planning",
+      "Real-time sync across family members",
     ],
     tech: ["React Native", "Firebase", "REST APIs"],
     type: "Mobile App",
@@ -17,17 +19,19 @@ export const projects = [
     appStoreUrl: "#",
     playStoreUrl: "#",
   },
+
   {
     id: 2,
     name: "Tydlig",
     tagline: "School Management Application",
     description:
-      "A school management system supporting multiple user roles — coordinators, teachers, and administrators with real-time communication support.",
+      "A role-based school management system enabling coordinators, teachers, and administrators to manage schedules, communication, and academic workflows efficiently.",
     features: [
-      "Coordinator dashboard",
-      "Teacher leave management",
-      "Schedule management",
-      "Real-time communication via Firebase Cloud Messaging",
+      "Role-based dashboards (Coordinator, Teacher, Owner)",
+      "Schedule management and class assignments",
+      "Teacher leave management system",
+      "Real-time communication using Firebase Cloud Messaging",
+      "Profile and workflow management for staff",
     ],
     tech: ["React Native", "Firebase", "API Integration"],
     type: "Mobile App",
@@ -35,17 +39,19 @@ export const projects = [
     appStoreUrl: "#",
     playStoreUrl: "#",
   },
+
   {
     id: 3,
     name: "Sunrise",
-    tagline: "Morning Routine Tracker",
+    tagline: "Habit Tracking & Productivity App",
     description:
-      "A habit-building application helping users maintain consistent morning routines with streak tracking, reminders, and achievement sharing.",
+      "A habit-building mobile application designed to help users build consistent morning routines using structured tracking, reminders, and motivation systems.",
     features: [
-      "Habit tracking",
-      "Streak system",
-      "Reminder notifications",
-      "Achievement sharing",
+      "Routine and habit tracking system",
+      "Streak-based motivation system",
+      "Reminder notifications and prompts",
+      "Categorized routines (writing, movement, etc.)",
+      "Achievement sharing functionality",
     ],
     tech: ["React Native", "Push Notifications", "REST APIs"],
     type: "Mobile App",
@@ -53,35 +59,39 @@ export const projects = [
     appStoreUrl: "#",
     playStoreUrl: "#",
   },
+
   {
     id: 4,
     name: "EaziQuote",
-    tagline: "Quote & Invoice Management",
+    tagline: "Quote & Invoice Management Platform",
     description:
-      "A quoting and invoicing app built for tradespeople. Includes premium subscription features via RevenueCat with seamless Play Store and App Store integration.",
+      "A mobile and web application designed for tradespeople to create professional quotes and invoices with integrated subscription-based premium features.",
     features: [
-      "Quote creation",
-      "Invoice generation",
-      "Job tracking",
-      "Premium subscriptions via RevenueCat",
+      "Quote and invoice creation system",
+      "Client and job management",
+      "Subscription-based premium features",
+      "RevenueCat integration for billing",
+      "Cross-platform support (iOS, Android)",
     ],
-    tech: ["React Native", "RevenueCat", "REST APIs", "TypeScript"],
+    tech: ["React Native", "React", "RevenueCat", "TypeScript", "REST APIs"],
     type: "Mobile App",
     color: "#f43f5e",
     appStoreUrl: "#",
     playStoreUrl: "#",
   },
+
   {
     id: 5,
     name: "Tuck",
     tagline: "B2B Gift Card Platform",
     description:
-      "A B2B platform enabling companies to offer discounted gift cards to employees through custom-branded portals. Includes 150+ gift card providers.",
+      "A B2B platform enabling companies to offer discounted gift cards through branded employee portals with dynamic theming and commission-based pricing.",
     features: [
-      "Admin dashboard",
-      "Client websites with custom branding",
-      "Employee gift card marketplace",
+      "Admin dashboard for managing clients and pricing",
+      "Dynamic client websites with branding",
+      "Employee portal for purchasing gift cards",
       "150+ gift card providers",
+      "Commission-based pricing system",
     ],
     tech: ["React", "TypeScript", "REST APIs"],
     type: "Web App",
@@ -89,20 +99,78 @@ export const projects = [
     liveUrl: "#",
     githubUrl: "#",
   },
+
+  {
+    id: 6,
+    name: "Bettermint",
+    tagline: "Fitness Habit & Tracking App",
+    description:
+      "A behavioral fitness application integrating Google Fitness APIs to track user health data and promote consistency through data-driven insights.",
+    features: [
+      "Google Fitness integration",
+      "Steps, calories, sleep, heart rate tracking",
+      "Workout and activity monitoring",
+      "Data visualization dashboards",
+    ],
+    tech: ["React Native", "Google Fitness SDK"],
+    type: "Mobile App",
+    color: "#22c55e",
+    appStoreUrl: "#",
+    playStoreUrl: "#",
+  },
+
+  {
+    id: 7,
+    name: "FootRank",
+    tagline: "Football Match Rating Platform",
+    description:
+      "A community-driven application allowing users to rate football matches and explore top-rated games across leagues.",
+    features: [
+      "Match rating and reviews",
+      "Top-rated match discovery",
+      "Community engagement features",
+    ],
+    tech: ["React Native"],
+    type: "Mobile App",
+    color: "#0ea5e9",
+    appStoreUrl: "#",
+    playStoreUrl: "#",
+  },
+
+  {
+    id: 8,
+    name: "GuisedUp",
+    tagline: "Social Community Platform",
+    description:
+      "A social platform designed to connect users experiencing similar emotional phases through posts, events, and messaging.",
+    features: [
+      "Posts, short videos, and events",
+      "Phase-based community interactions",
+      "Personal and group chat",
+    ],
+    tech: ["React Native"],
+    type: "Mobile App",
+    color: "#ec4899",
+    appStoreUrl: "#",
+    playStoreUrl: "#",
+  },
 ];
 
 export const skills = [
   { label: "React Native", icon: "📱" },
+  { label: "React.js", icon: "⚛️" },
   { label: "TypeScript", icon: "🔷" },
+  { label: "JavaScript", icon: "🟨" },
   { label: "Redux", icon: "⚡" },
+  { label: "TanStack Query", icon: "🔄" },
   { label: "Firebase", icon: "🔥" },
   { label: "REST APIs", icon: "🔗" },
   { label: "RevenueCat", icon: "💰" },
   { label: "Push Notifications", icon: "🔔" },
+  { label: "Google Fitness", icon: "🏃" },
+  { label: "AWS Cognito", icon: "☁️" },
   { label: "Play Store", icon: "▶️" },
   { label: "App Store", icon: "🍎" },
-  { label: "JavaScript", icon: "🟨" },
-  { label: "React.js", icon: "⚛️" },
   { label: "Git", icon: "🌿" },
 ];
 
@@ -110,23 +178,25 @@ export const experience = [
   {
     role: "React Native Developer",
     company: "SilverSky Technology",
-    period: "2023 – Present",
+    period: "Oct 2023 – Present",
     duration: "1.5+ Years",
     description:
-      "Building cross-platform mobile applications used by thousands of users across Android and iOS platforms.",
+      "Developing cross-platform mobile and web applications across multiple domains including productivity, education, fitness, and social platforms.",
     responsibilities: [
-      "Developed cross-platform mobile apps using React Native for Android & iOS",
-      "Implemented complex UI animations and user-facing features",
-      "Integrated REST APIs and third-party libraries",
-      "Implemented push notifications and real-time communication with Firebase",
-      "Built in-app subscription flows using RevenueCat",
-      "Supported production releases on Play Store & App Store",
+      "Built cross-platform mobile apps using React Native (Android & iOS)",
+      "Developed web applications using React.js",
+      "Implemented complex UI and scalable frontend architectures",
+      "Integrated REST APIs and third-party SDKs",
+      "Implemented real-time chat and push notifications using Firebase",
+      "Built subscription systems using RevenueCat",
+      "Worked with Google Fitness SDK for health data tracking",
+      "Supported app deployment on Play Store and App Store",
     ],
   },
 ];
 
 export const socialLinks = {
-  github: "https://github.com/",
-  linkedin: "https://linkedin.com/in/",
-  email: "satyamnarayan@email.com",
+  github: "https://github.com/itssatyamnarayan",
+  linkedin: "https://www.linkedin.com/in/satyam-narayan/",
+  email: "iamsatyamnarayan@gmail.com",
 };

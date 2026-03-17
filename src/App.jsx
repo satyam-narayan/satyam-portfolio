@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './index.css';
 
 /* ─── Icons ─── */
@@ -11,6 +11,8 @@ const PlayIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="cur
 const GlobeIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>;
 const MenuIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>;
 const CloseIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>;
+const SunIcon = ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>;
+const MoonIcon = ({ s = 18 }) => <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>;
 
 /* ─── Data ─── */
 const NAV = [
@@ -94,8 +96,52 @@ const PROJECTS = [
   },
 ];
 
+const OTHER_PROJECTS = [
+  {
+    id: 6, name: 'Bettermint', tagline: 'Fitness Habit & Tracking App',
+    desc: 'A behavioral fitness application integrating Google Fitness APIs to track user health data and promote consistency through data-driven insights.',
+    highlights: ['Google Fitness integration', 'Steps, calories & sleep tracking', 'Data visualization dashboards'],
+    tech: ['React Native', 'Google Fitness SDK'],
+    type: 'Mobile App', emoji: '💪',
+    color: '#22c55e',
+  },
+  {
+    id: 7, name: 'FootRank', tagline: 'Football Match Rating Platform',
+    desc: 'A community-driven application allowing users to rate football matches and explore top-rated games across leagues.',
+    highlights: ['Match rating & reviews', 'Top-rated match discovery', 'Community engagement'],
+    tech: ['React Native'],
+    type: 'Mobile App', emoji: '⚽',
+    color: '#0ea5e9',
+  },
+  {
+    id: 8, name: 'GuisedUp', tagline: 'Social Community Platform',
+    desc: 'A social platform designed to connect users experiencing similar emotional phases through posts, events, and messaging.',
+    highlights: ['Posts, videos & events', 'Phase-based communities', 'Personal & group chat'],
+    tech: ['React Native'],
+    type: 'Mobile App', emoji: '💬',
+    color: '#ec4899',
+  },
+];
+
 /* ─── Project Modal ─── */
 function Modal({ project, onClose }) {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleWheel = (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
+
   if (!project) return null;
   const isMobile = project.type === 'Mobile App';
 
@@ -104,24 +150,25 @@ function Modal({ project, onClose }) {
       <div className="modal-box">
         <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
 
-        {/* Screenshots strip */}
-        <div className="modal-screenshots">
-          {project.screenshots && project.screenshots.length > 0
-            ? project.screenshots.map((src, i) => (
-              <img key={i} src={src} alt={`${project.name} screenshot ${i + 1}`} className="modal-screenshot" />
-            ))
-            : Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="modal-screenshot-ph">
-                <div className="modal-screenshot-ph-icon">{project.emoji}</div>
-                <div className="modal-screenshot-ph-label">Screenshot {i + 1}</div>
-              </div>
-            ))
-          }
-        </div>
-
         <div className="modal-content">
           <div className="modal-name">{project.name}</div>
           <div className="modal-sub">{project.tagline} · {project.type}</div>
+
+          {/* Screenshots strip */}
+          <div className="modal-screenshots" ref={scrollRef}>
+            {project.screenshots && project.screenshots.length > 0
+              ? project.screenshots.map((src, i) => (
+                <img key={i} src={src} alt={`${project.name} screenshot ${i + 1}`} className="modal-screenshot" />
+              ))
+              : Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="modal-screenshot-ph">
+                  <div className="modal-screenshot-ph-icon">{project.emoji}</div>
+                  <div className="modal-screenshot-ph-label">Screenshot {i + 1}</div>
+                </div>
+              ))
+            }
+          </div>
+
           <p className="modal-desc">{project.desc}</p>
           <ul className="modal-features">
             {project.features.map((f, i) => <li key={i}>{f}</li>)}
@@ -164,6 +211,20 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [connectOpen, setConnectOpen] = useState(false);
 
+  // Theme logic
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
@@ -194,23 +255,39 @@ export default function App() {
           {'<'}<span>sn</span>{' />'}
         </button>
 
-        {/* Desktop nav */}
-        <div className="nav-links">
-          {NAV.map(({ label, id }) => (
-            <button
-              key={id}
-              className={`nav-btn${active === id ? ' active' : ''}`}
-              onClick={() => goto(id)}
-            >
-              {label}
-            </button>
-          ))}
+        {/* Desktop nav + Toggle */}
+        <div className="desktop-controls" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div className="nav-links">
+            {NAV.map(({ label, id }) => (
+              <button
+                key={id}
+                className={`nav-btn${active === id ? ' active' : ''}`}
+                onClick={() => goto(id)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Desktop Theme Toggle */}
+          <button
+            className="theme-toggle-desktop"
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <SunIcon s={16} /> : <MoonIcon s={16} />}
+          </button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
-          {menuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
+        {/* Mobile controls */}
+        <div className="mobile-controls">
+          <button className="hamburger" onClick={toggleTheme} aria-label="Toggle Theme">
+            {theme === 'dark' ? <SunIcon s={18} /> : <MoonIcon s={18} />}
+          </button>
+          <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile drawer */}
@@ -311,7 +388,7 @@ export default function App() {
               </p>
 
               <div className="stats-row">
-                {[['1.5+', 'Years of Experience'], ['15+', 'Projects Delivered'], ['2', 'Platforms (iOS & Android)']].map(
+                {[['1.5+', 'Years of Experience'], ['15+', 'Projects Delivered'], ['3', 'Platforms (iOS, Android & Web)']].map(
                   ([n, l]) => <div className="stat-box" key={l}><div className="stat-num">{n}</div><div className="stat-label">{l}</div></div>
                 )}
               </div>
@@ -371,7 +448,8 @@ export default function App() {
 
           {/* ── PROJECTS ── */}
           <section className="c-section" id="projects">
-            <h2 className="c-heading">Projects</h2>
+            <h2 className="c-heading">Featured Projects</h2>
+            <p className="section-subtitle">Production apps shipped across iOS, Android & Web — click a card for the full story.</p>
             <div className="projects-group">
               {PROJECTS.map(p => (
                 <div key={p.id} className="proj-card" onClick={() => setModal(p)}>
@@ -396,6 +474,32 @@ export default function App() {
                       : <div className="proj-img-placeholder">{p.emoji}</div>
                     }
                   </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ── OTHER PROJECTS ── */}
+            <h2 className="c-heading" style={{ marginTop: 72 }}>Other Projects</h2>
+            <p className="section-subtitle">Additional projects I've contributed to as a developer.</p>
+            <div className="other-projects-grid">
+              {OTHER_PROJECTS.map(p => (
+                <div key={p.id} className="other-proj-card" style={{ '--card-accent': p.color }}>
+                  <div className="other-proj-top">
+                    <span className="other-proj-emoji">{p.emoji}</span>
+                    <span className={`proj-badge ${p.type === 'Mobile App' ? 'mobile' : 'web'}`}>
+                      {p.type === 'Mobile App' ? 'Mobile' : 'Web'}
+                    </span>
+                  </div>
+                  <div className="other-proj-name">{p.name}</div>
+                  <div className="other-proj-tagline">{p.tagline}</div>
+                  <p className="other-proj-desc">{p.desc}</p>
+                  <ul className="other-proj-highlights">
+                    {p.highlights.map((h, i) => <li key={i}>{h}</li>)}
+                  </ul>
+                  <div className="other-proj-tech">
+                    {p.tech.map((t, i) => <span className="tag" key={i}>{t}</span>)}
+                  </div>
+                  <div className="other-proj-accent-line" />
                 </div>
               ))}
             </div>
