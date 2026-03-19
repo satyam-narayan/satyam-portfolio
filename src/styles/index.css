@@ -42,6 +42,10 @@ button {
 img {
   max-width: 100%;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -334,6 +338,7 @@ img {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
@@ -478,12 +483,10 @@ img {
   right: 0;
   width: 55%;
   height: 100vh;
-  background: radial-gradient(
-    ellipse 60% 65% at 80% 15%,
-    rgba(124, 109, 250, 0.07) 0%,
-    rgba(30, 58, 138, 0.09) 40%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse 60% 65% at 80% 15%,
+      rgba(124, 109, 250, 0.07) 0%,
+      rgba(30, 58, 138, 0.09) 40%,
+      transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -858,7 +861,8 @@ img {
 /* Project image area */
 .proj-image-wrap {
   width: 100%;
-  height: 180px;
+  height: auto;
+  aspect-ratio: 1536 / 1024;
   overflow: hidden;
   background: var(--surf-2);
   border-top: 1px solid var(--border);
@@ -873,7 +877,6 @@ img {
   transition:
     transform 0.4s ease,
     filter 0.3s ease;
-  filter: brightness(0.75) saturate(0.9);
 }
 
 /* Placeholder when no image */
@@ -895,7 +898,7 @@ img {
 .proj-card:hover .proj-image-wrap img,
 .proj-card:hover .proj-img-placeholder {
   transform: scale(1.04);
-  filter: brightness(0.98) saturate(1.1);
+  filter: brightness(1.05) saturate(1.05);
 }
 
 /* =================== OTHER PROJECTS =================== */
@@ -929,11 +932,9 @@ img {
   position: absolute;
   inset: 0;
   border-radius: 14px;
-  background: radial-gradient(
-    ellipse 120% 80% at 50% 100%,
-    color-mix(in srgb, var(--card-accent) 8%, transparent) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse 120% 80% at 50% 100%,
+      color-mix(in srgb, var(--card-accent) 8%, transparent) 0%,
+      transparent 70%);
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
@@ -1048,11 +1049,9 @@ img {
   height: 3px;
   margin-top: 14px;
   border-radius: 99px;
-  background: linear-gradient(
-    90deg,
-    var(--card-accent),
-    color-mix(in srgb, var(--card-accent) 40%, transparent)
-  );
+  background: linear-gradient(90deg,
+      var(--card-accent),
+      color-mix(in srgb, var(--card-accent) 40%, transparent));
   opacity: 0;
   transform: scaleX(0.3);
   transform-origin: left;
@@ -1258,8 +1257,8 @@ body.modal-open .top-nav {
   border: 1px solid var(--border-md);
   border-radius: 18px;
   width: 100%;
-  max-width: 520px;
-  max-height: 80vh;
+  max-width: 760px;
+  max-height: 85vh;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
@@ -1279,7 +1278,6 @@ body.modal-open .top-nav {
 /* Screenshot scroll strip */
 .modal-screenshots {
   width: 100%;
-  height: 220px;
   background: var(--surf-2);
   border-radius: 12px;
   border: 1px solid var(--border);
@@ -1295,11 +1293,11 @@ body.modal-open .top-nav {
   -webkit-overflow-scrolling: touch;
 }
 
-.modal-screenshots > :first-child {
+.modal-screenshots> :first-child {
   margin-left: 0;
 }
 
-.modal-screenshots > :last-child {
+.modal-screenshots> :last-child {
   margin-right: 0;
 }
 
@@ -1318,12 +1316,11 @@ body.modal-open .top-nav {
 }
 
 .modal-screenshot {
-  height: 100%;
+  height: 65vh;
+  min-height: 480px;
   width: auto;
-  min-width: 200px;
-  max-width: 90%;
   border-radius: 12px;
-  object-fit: cover;
+  object-fit: contain;
   scroll-snap-align: center;
   flex-shrink: 0;
   border: 1px solid var(--border);
@@ -1332,7 +1329,7 @@ body.modal-open .top-nav {
 
 /* Placeholder screenshot tiles */
 .modal-screenshot-ph {
-  height: 100%;
+  height: 200px;
   min-width: 180px;
   border-radius: 12px;
   background: var(--surf);

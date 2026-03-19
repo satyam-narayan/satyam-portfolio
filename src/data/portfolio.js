@@ -1,5 +1,8 @@
 // ─────────────────────────────────────────────────────────
 // PERSONAL INFO
+
+import { Images } from "../assets";
+
 // ─────────────────────────────────────────────────────────
 export const personalInfo = {
   name: "Satyam Narayan",
@@ -24,7 +27,7 @@ export const navItems = [
 // SOCIAL LINKS
 // ─────────────────────────────────────────────────────────
 export const socialLinks = {
-  github: "https://github.com/itssatyamnarayan",
+  github: "https://github.com/satyam-narayan",
   linkedin: "https://www.linkedin.com/in/satyam-narayan/",
   twitter: "https://twitter.com/",
   email: "iamsatyamnarayan@gmail.com",
@@ -114,77 +117,99 @@ export const education = [
 export const featuredProjects = [
   {
     id: 1,
+    name: "Guised Up",
+    tagline: "Emotion-Based Social Community Platform",
+    description:
+      "A unique social networking platform designed to connect users based on emotional phases of life. The app enables users to share experiences, interact with like-minded individuals, and build meaningful connections beyond traditional social media.",
+    features: [
+      "Emotion-based user categorization system",
+      "Post creation with images, short videos (moments), and events",
+      "Phase-based content feed and community interaction",
+      "Personal and group chat functionality",
+      "Journey tracking (My Voyage) and storytelling (My Tale)",
+    ],
+    tech: ["React Native", "Firebase", "REST APIs"],
+    type: "Mobile App",
+    emoji: "🎭",
+    coverImage: Images.guisedup.cover,
+    screenshots: [
+      Images.guisedup.gu1,
+      Images.guisedup.gu2,
+      Images.guisedup.gu3,
+      Images.guisedup.gu4,
+    ],
+    appStoreUrl: "https://apps.apple.com/in/app/guised-up/id6618147177",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.hue",
+  },
+
+  {
+    id: 2,
     name: "FamilyFeed",
     tagline: "Smart Family Organizer",
     description:
-      "Collaborative family management app for tasks, groceries, appointments, and events with smart AI bots.",
+      "A collaborative family management application that helps families organize daily life through shared tasks, grocery lists, appointments, and smart automation tools, all within a private and secure environment.",
     features: [
-      "Shared lists, tasks & events",
-      "Calendar & appointment management",
-      "Smart bots — GroceryBot, HealthBot",
-      "Real-time sync via Firebase",
+      "Shared family lists, todos, and event planning",
+      "Calendar and appointment management system",
+      "Smart bots (GroceryBot, HealthBot, TravelBot, EventsBot)",
+      "Receipt and image scanning for quick list creation",
+      "Real-time synchronization across family members",
     ],
     tech: ["React Native", "Firebase", "REST APIs"],
     type: "Mobile App",
     emoji: "👨‍👩‍👧‍👦",
-    coverImage: null,
-    screenshots: [],
-    appStoreUrl: "#",
-    playStoreUrl: "#",
-  },
-  {
-    id: 2,
-    name: "Tydlig",
-    tagline: "School Management System",
-    description:
-      "Multi-role school management system for coordinators, teachers, and admins with real-time messaging.",
-    features: [
-      "Coordinator & admin dashboard",
-      "Teacher leave management",
-      "Schedule management",
-      "Real-time messaging via FCM",
+    coverImage: Images.familyfeed.cover,
+    screenshots: [
+      Images.familyfeed.ff1,
+      Images.familyfeed.ff2,
+      Images.familyfeed.ff3,
+      Images.familyfeed.ff4,
     ],
-    tech: ["React Native", "Firebase", "API Integration"],
-    type: "Mobile App",
-    emoji: "🏫",
-    coverImage: null,
-    screenshots: [],
-    appStoreUrl: "#",
-    playStoreUrl: "#",
+    appStoreUrl: "https://apps.apple.com/in/app/familyfeed-family-assistant/id6741578071",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.app.familyfeed",
   },
+
   {
     id: 3,
-    name: "Sunrise",
-    tagline: "Morning Routine Tracker",
+    name: "Footrank",
+    tagline: "Football Match Rating Platform",
     description:
-      "Habit-building app for consistent morning routines with streaks, reminders, and social sharing.",
+      "A community-driven platform where users can rate, review, and discover football matches across major leagues, helping fans identify the most exciting games.",
     features: [
-      "Habit tracking with streaks",
-      "Push notification reminders",
-      "Achievement sharing",
-      "Progress charts",
+      "Match rating and review system",
+      "Top-rated matches by matchday, month, and season",
+      "User-generated reviews and feedback",
+      "Guest and registered user support",
+      "League coverage including EPL, La Liga, and more",
     ],
-    tech: ["React Native", "Push Notifications", "REST APIs"],
+    tech: ["React Native"],
     type: "Mobile App",
-    emoji: "🌅",
-    coverImage: null,
-    screenshots: [],
-    appStoreUrl: "#",
-    playStoreUrl: "#",
+    emoji: "⚽",
+    coverImage: Images.footrank.cover,
+    screenshots: [
+      Images.footrank.fr1,
+      Images.footrank.fr2,
+      Images.footrank.fr3,
+      Images.footrank.fr4,
+    ],
+    appStoreUrl: "https://apps.apple.com/in/app/foot-rank/id6749535330",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.footrank",
   },
+
   {
     id: 4,
-    name: "EaziQuote",
-    tagline: "Quote & Invoice Management",
+    name: "Eazi Quote",
+    tagline: "Quote & Invoice Management Platform",
     description:
-      "Quoting and invoicing app for tradespeople with premium subscriptions via RevenueCat.",
+      "A mobile and web-based quoting and invoicing platform built for tradespeople to create professional documents quickly, manage jobs efficiently, and get paid faster with subscription-based premium features.",
     features: [
-      "Quote and invoice creation",
-      "Job tracking dashboard",
-      "Premium tier via RevenueCat",
-      "Published on App Store & Play Store",
+      "Professional quote and invoice generation",
+      "Job and client management system",
+      "Subscription-based premium features",
+      "RevenueCat integration for App Store & Play Store billing",
+      "Mobile-first design optimized for on-site usage",
     ],
-    tech: ["React Native", "RevenueCat", "TypeScript"],
+    tech: ["React Native", "React", "RevenueCat", "TypeScript"],
     type: "Mobile App",
     emoji: "📋",
     coverImage: null,
@@ -192,17 +217,19 @@ export const featuredProjects = [
     appStoreUrl: "#",
     playStoreUrl: "#",
   },
+
   {
     id: 5,
     name: "Tuck",
     tagline: "B2B Gift Card Platform",
     description:
-      "B2B platform for companies to offer discounted gift cards via custom employee portals. 150+ providers.",
+      "A scalable B2B platform that enables companies to offer discounted gift cards to employees through fully branded portals, with dynamic theming and commission-based pricing models.",
     features: [
-      "Admin dashboard",
-      "Custom branded portals",
-      "Employee gift card marketplace",
-      "150+ gift card providers",
+      "Admin dashboard for managing clients and commissions",
+      "Dynamic white-label client portals",
+      "Employee marketplace for purchasing gift cards",
+      "Support for 150+ gift card providers",
+      "Custom pricing and discount management system",
     ],
     tech: ["React", "TypeScript", "REST APIs"],
     type: "Web App",
